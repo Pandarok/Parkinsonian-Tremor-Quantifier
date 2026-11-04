@@ -33,6 +33,7 @@ Parkinsonian resting tremor typically occurs within the **4–6 Hz** frequency r
 ### 🌐 Interactive Simulation (Wokwi)
 You can test and run this project right in your browser without any physical hardware:
 👉 **[Open Parkinsonian Tremor Quantifier in Wokwi](https://wokwi.com/projects/478310285761660929)**
+![Wokwi Simulation Setup](docs/image.png)
 
 ---
 
