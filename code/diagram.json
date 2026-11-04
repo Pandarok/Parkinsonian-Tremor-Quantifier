@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "author": "Tremor Quantifier Project",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 96, "left": 14.44, "attrs": {} },
+    { "type": "board-ssd1306", "id": "oled1", "top": 3.14, "left": -86.17, "attrs": {} },
+    { "type": "wokwi-mpu6050", "id": "mpu1", "top": 120, "left": -150, "attrs": {} }
+  ],
+  "connections": [
+    [ "oled1:GND", "esp:GND.1", "black", [ "v-48", "h211.2", "v188.74", "h-192", "v99.26" ] ],
+    [ "oled1:VCC", "esp:3V3", "red", [ "v-28.8", "h192.15", "v105.6", "h-134.55" ] ],
+    [ "oled1:SCL", "esp:22", "blue", [ "v-57.6", "h201.9", "v163.2" ] ],
+    [ "oled1:SDA", "esp:21", "blue", [ "v-105.6", "h201.67", "v240" ] ],
+    [ "mpu1:GND", "esp:GND.3", "black", [ "v0" ] ],
+    [ "mpu1:VCC", "esp:3V3", "red", [ "v0" ] ],
+    [ "mpu1:SCL", "esp:22", "blue", [ "v-29.78", "h210" ] ],
+    [ "mpu1:SDA", "esp:21", "green", [ "v191.02", "h219.6" ] ]
+  ],
+  "dependencies": {}
+}
