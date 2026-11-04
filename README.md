@@ -30,29 +30,9 @@ Parkinsonian resting tremor typically occurs within the **4–6 Hz** frequency r
 
 ---
 
-## 🚀 Setup & Replication Instructions
-
-### 1. Requirements & Libraries
-Ensure you have **Arduino IDE** installed with the ESP32 board package. Install the following libraries via ZIP or Library Manager:
-* `Adafruit MPU6050`
-* `Adafruit SSD1306`
-* `Adafruit GFX Library`
-* `arduinoFFT`
-
-### 2. Pinout Configuration (I2C)
-| Component Pin | ESP32 Pin |
-| :--- | :--- |
-| **SDA** (OLED & MPU6050) | GPIO 21 |
-| **SCL** (OLED & MPU6050) | GPIO 22 |
-| **VCC** | 3.3V |
-| **GND** | GND |
-
-### 3. Simulation (Wokwi)
-You can test and run this project virtually using [Wokwi](https://wokwi.com/):
-1. Create a new ESP32 project.
-2. Replace `sketch.ino` with the code from the `/code` folder.
-3. Replace `diagram.json` with the layout file provided in this repository.
-4. Click **Play** to start the simulation.
+### 🌐 Interactive Simulation (Wokwi)
+You can test and run this project right in your browser without any physical hardware:
+👉 **[Open Parkinsonian Tremor Quantifier in Wokwi](https://wokwi.com/projects/478310285761660929)**
 
 ---
 
