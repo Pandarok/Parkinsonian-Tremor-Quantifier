@@ -11,16 +11,14 @@ This document details the electrical connections, Bill of Materials (BOM), and p
 | **Microcontroller** | ESP32-S3-WROOM-1 DevKit | 1 | Dual-core Xtensa LX7, 3.3V logic |
 | **IMU Sensor** | MPU-6050 / MPU-6500 (GY-521) | 1 | 3-axis accelerometer & gyroscope, I2C (`0x68`) |
 | **Display** | 0.96" SSD1306 OLED (128×64) | 1 | Monochrome I2C display (`0x3C`) |
-| **Indicator LEDs** | 5mm Red & 5mm Green LEDs | 2 | Visual status indicators (Tremor vs. Normal) |
-| **Resistors** | 220 Ω (1/4 W) | 2 | Current-limiting resistors for LEDs |
+| **Indicator LEDs** | 5mm Red & 5mm Green LEDs | 2 | Direct 3.3V GPIO visual status indicators |
 | **Prototyping** | Breadboard & Jumper Wires | 1 set | Male-to-Male / Male-to-Female Dupont wires |
-| **Wearable Mount** | Nylon Velcro Wrist Strap | 1 | Secures the IMU module to the wrist/hand |
 
 ---
 
 ## 2. Physical Prototype Wiring (ESP32-S3-WROOM-1)
 
-Both the **MPU-6050/6500** sensor and the **SSD1306 OLED** display share a single hardware I2C bus configured on **GPIO 8 (SDA)** and **GPIO 9 (SCL)** operating at `100 kHz`.
+Both the **MPU-6050/6500** sensor and the **SSD1306 OLED** display share a single hardware I2C bus configured on **GPIO 8 (SDA)** and **GPIO 9 (SCL)** operating at `100 kHz`. The IMU sensor is connected via flexible jumper wires so it can be held directly in the hand during tremor tests while the main board and OLED remain stationary on the breadboard.
 
 ### Pinout Table
 
@@ -35,9 +33,9 @@ Both the **MPU-6050/6500** sensor and the **SSD1306 OLED** display share a singl
 | | `GND` | `GND` | Common system ground |
 | | `SDA` | `GPIO 8` | Shared I2C Data line |
 | | `SCL` / `SCK` | `GPIO 9` | Shared I2C Clock line (`0x3C`) |
-| **Red LED** | Anode (`+`) | `GPIO 4` | Connected via **220 Ω** resistor (Active on `4.0–6.0 Hz`) |
+| **Red LED** | Anode (`+`) | `GPIO 4` | Active HIGH when tremor (`4.0–6.0 Hz`) is detected |
 | | Cathode (`-`) | `GND` | Common system ground |
-| **Green LED** | Anode (`+`) | `GPIO 5` | Connected via **220 Ω** resistor (Active in Normal state) |
+| **Green LED** | Anode (`+`) | `GPIO 5` | Active HIGH during normal baseline state |
 | | Cathode (`-`) | `GND` | Common system ground |
 
 ---
@@ -55,8 +53,6 @@ Both the **MPU-6050/6500** sensor and the **SSD1306 OLED** display share a singl
    |   |   |           |                       |                   |
    |   |   |           | GPIO 4         GPIO 5 |                   |
    |   |   |           +---+---------------+---+                   |
-   |   |   |               |               |                       |
-   |   |   |            [220 Ω]         [220 Ω]                    |
    |   |   |               |               |                       |
    |   |   |            (Red LED)     (Green LED)                  |
    |   |   |               |               |                       |
@@ -79,8 +75,8 @@ Both the **MPU-6050/6500** sensor and the **SSD1306 OLED** display share a singl
 ## 3. Design & Electrical Considerations
 
 * **Shared I2C Bus Integrity:** Both I2C breakout boards (GY-521 and SSD1306) include built-in `4.7 kΩ`–`10 kΩ` pull-up resistors to `3.3V`. Running the bus at `100 kHz` ensures signal integrity over breadboard jumper wires without parasitic capacitance distortion.
-* **LED Current Limiting:** The `220 Ω` series resistors limit GPIO output current to approximately `(3.3V - 2.0V) / 220 Ω ≈ 6 mA`, protecting the ESP32-S3 I/O drivers while maintaining clear daylight visibility.
-* **Mechanical Isolation:** When mounting the IMU onto the wrist strap, the underside solder joints are insulated with Kapton/electrical tape to prevent skin contact or short circuits across the woven nylon fabric.
+* **3.3V Logic Drive:** The indicator LEDs are driven directly from the ESP32-S3 `3.3V` GPIO pins for rapid breadboard prototyping.
+* **Handheld IMU Testing:** The GY-521 sensor module is tethered via flexible Dupont wires, allowing free hand oscillation during `4.0–6.0 Hz` tremor testing without moving the OLED display.
 
 ---
 
