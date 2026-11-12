@@ -12,6 +12,18 @@ An embedded real-time Digital Signal Processing (DSP) system built on the **ESP3
 
 ---
 
+## Wokwi Online Simulation
+
+You can test and run the virtual circuit directly in your browser without physical hardware:
+
+🔗 **[Launch Interactive Wokwi Simulation](https://wokwi.com/projects/478310285761660929)**
+
+![Wokwi Simulation](docs/image.png)
+
+*Virtual circuit simulation running `code/wokwi_simulation/sketch.ino` with real-time FFT peak detection and LED/OLED feedback.*
+
+---
+
 ## Key Features
 
 * **Real-Time 50 Hz Sampling:** Deterministic `20,000 µs` microsecond timer loop capturing 128 samples per analysis window (`2.56 s`).
@@ -30,11 +42,13 @@ Parkinsonian-Tremor-Quantifier/
 │   ├── esp32s3_hardware/
 │   │   └── tremor_quantifier_hw.ino   # Production firmware for physical ESP32-S3 hardware
 │   └── wokwi_simulation/
-│       ├── sketch.ino                 # Simulation firmware for Wokwi
-│       └── diagram.json               # Wokwi circuit diagram
+│       ├── diagram.json               # Wokwi circuit diagram
+│       └── sketch.ino                 # Simulation firmware for Wokwi
 ├── docs/
+│   ├── image.png                      # Wokwi circuit simulation screenshot
 │   ├── prototype.jpg                  # Assembled hardware prototype photo
 │   └── schematics.md                  # Bill of Materials, pinouts, and block diagram
+├── .gitignore
 ├── LICENSE
 └── README.md
 ```
