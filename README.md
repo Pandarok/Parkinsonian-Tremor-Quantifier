@@ -4,6 +4,14 @@ An embedded real-time Digital Signal Processing (DSP) system built on the **ESP3
 
 ---
 
+## Project Materials & Video Demonstration
+
+All submission deliverables—including the **hardware video demonstration**, **full technical report (PDF)**, and **A3 showcase poster**—are available in the project folder:
+
+📂 **[Open Project Materials & Video Demo (Google Drive)](https://drive.google.com/drive/folders/18LsQ1-t6IG1z_b3kSkqlwVJ2NOWjOlFK)**
+
+---
+
 ## Hardware Prototype
 
 ![Hardware Prototype](docs/prototype.jpg)
